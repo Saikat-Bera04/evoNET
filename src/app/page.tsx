@@ -62,7 +62,7 @@ export default function Home() {
                   EvoNFT
               </span>
           </div>
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none font-headline bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400">
+          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none font-headline bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400">
             Evolving NFTs for the Connected Metaverse
           </h1>
           <p className="mx-auto max-w-[700px] text-foreground/80 md:text-xl mt-4">
