@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 const navItems = [
   {
     label: 'Ecosystem',
-    bgColor: 'hsl(0 0% 0%)',
-    textColor: 'hsl(0 0% 100%)',
+    bgColor: 'hsl(0 0% 100%)',
+    textColor: 'hsl(0 0% 0%)',
     links: [
       { label: 'Home', href: '/', ariaLabel: 'Go to the homepage' },
       { label: 'Marketplace', href: '/marketplace', ariaLabel: 'Explore the marketplace' },
@@ -27,8 +27,8 @@ const navItems = [
   },
   {
     label: 'My Collection',
-    bgColor: 'hsl(0 0% 0%)',
-    textColor: 'hsl(0 0% 100%)',
+    bgColor: 'hsl(0 0% 100%)',
+    textColor: 'hsl(0 0% 0%)',
     links: [
         { label: 'Dashboard', href: '/dashboard', ariaLabel: 'View your NFT dashboard' },
         { label: 'Profile', href: '/profile', ariaLabel: 'View your user profile' },
@@ -37,8 +37,8 @@ const navItems = [
   },
   {
     label: 'About',
-    bgColor: 'hsl(0 0% 0%)',
-    textColor: 'hsl(0 0% 100%)',
+    bgColor: 'hsl(0 0% 100%)',
+    textColor: 'hsl(0 0% 0%)',
     links: [
         { label: 'About EvoNFT', href: '/about', ariaLabel: 'Learn about EvoNFT' },
         { label: 'Admin', href: '/admin', ariaLabel: 'Go to the admin portal' },
@@ -72,7 +72,13 @@ export default function RootLayout({
           />
         )}
         <div className="absolute inset-0 z-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-        <CardNav items={navItems} />
+        <CardNav 
+            items={navItems}
+            baseColor='hsl(0 0% 100%)'
+            menuColor='hsl(0 0% 0%)'
+            buttonBgColor='hsl(0 0% 90%)'
+            buttonTextColor='hsl(0 0% 0%)'
+        />
         <div className="relative z-10 flex min-h-screen flex-col pt-24">
           <main className="flex-1">{children}</main>
           <Footer />
