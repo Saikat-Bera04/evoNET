@@ -43,18 +43,8 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center">
       <section className="relative w-full h-[70vh] md:h-[80vh] flex items-center justify-center text-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          {heroImage && (
-            <Image
-              src={heroImage.imageUrl}
-              alt={heroImage.description}
-              data-ai-hint={heroImage.imageHint}
-              fill
-              className="object-cover opacity-20"
-            />
-          )}
-           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-        </div>
+        {/* The GridDistortion component is now in the main layout, so we don't need it here. */}
+        {/* The gradient overlay is also in the main layout */}
 
         <div className="container px-4 md:px-6 z-10 flex flex-col items-center">
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none font-headline bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400">

@@ -3,8 +3,10 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import Footer from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
-import LiquidEther from '@/components/liquid-ether';
 import CardNav from '@/components/CardNav';
+import GridDistortion from '@/components/grid-distortion';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+
 
 export const metadata: Metadata = {
   title: 'EvoNFT - Evolving NFTs for the Connected Metaverse',
@@ -20,7 +22,6 @@ const navItems = [
       { label: 'Home', href: '/', ariaLabel: 'Go to the homepage' },
       { label: 'Marketplace', href: '/marketplace', ariaLabel: 'Explore the marketplace' },
       { label: 'Mint an NFT', href: '/mint', ariaLabel: 'Mint a new NFT' },
-      { label: 'About EvoNFT', href: '/about', ariaLabel: 'Learn about EvoNFT' },
     ],
   },
   {
@@ -30,9 +31,18 @@ const navItems = [
     links: [
         { label: 'Dashboard', href: '/dashboard', ariaLabel: 'View your NFT dashboard' },
         { label: 'Profile', href: '/profile', ariaLabel: 'View your user profile' },
-        { label: 'Admin', href: '/admin', ariaLabel: 'Go to the admin portal' },
+        { label: 'Evolve', href: '/evolve/1', ariaLabel: 'Evolve an NFT'},
     ],
   },
+  {
+    label: 'About',
+    bgColor: 'hsl(var(--accent))',
+    textColor: 'hsl(var(--accent-foreground))',
+    links: [
+        { label: 'About EvoNFT', href: '/about', ariaLabel: 'Learn about EvoNFT' },
+        { label: 'Admin', href: '/admin', ariaLabel: 'Go to the admin portal' },
+    ],
+  }
 ];
 
 
@@ -41,6 +51,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const heroImage = PlaceHolderImages.find(p => p.id === 'hero');
+
   return (
     <html lang="en" className="dark">
       <head>
@@ -52,7 +64,13 @@ export default function RootLayout({
         />
       </head>
       <body className={cn('font-body antialiased min-h-screen bg-background')}>
-        <LiquidEther className="fixed inset-0 z-0" />
+        {heroImage && (
+          <GridDistortion 
+            imageSrc={heroImage.imageUrl} 
+            className="fixed inset-0 z-0 opacity-20"
+          />
+        )}
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
         <CardNav items={navItems} />
         <div className="relative z-10 flex min-h-screen flex-col pt-24">
           <main className="flex-1">{children}</main>
