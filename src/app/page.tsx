@@ -1,5 +1,6 @@
 
 
+
 import { Button } from "@/components/ui/magic-border-button";
 import NftCard from "@/components/nft-card";
 import { nfts } from "@/lib/data";
@@ -10,27 +11,32 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Masonry from "@/components/ui/masonry";
 import { ExpandableCardDemo } from "@/components/ui/expandable-card";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 const features = [
   {
+    quote: "Watch your NFTs change and grow based on real-world events and interactions.",
+    name: "Real-Time Evolution",
+    title: "Dynamic Core",
     icon: <IterationCw className="h-8 w-8" />,
-    title: "Real-Time Evolution",
-    description: "Watch your NFTs change and grow based on real-world events and interactions.",
   },
   {
+    quote: "Seamlessly move your dynamic NFTs across different metaverses and platforms.",
+    name: "Interoperability",
+    title: "Cross-Platform",
     icon: <Sparkles className="h-8 w-8" />,
-    title: "Interoperability",
-    description: "Seamlessly move your dynamic NFTs across different metaverses and platforms.",
   },
     {
+    quote: "Built on Celo, ensuring true ownership and security for your digital assets.",
+    name: "Decentralization",
+    title: "Secure & Owned",
     icon: <Bot className="h-8 w-8" />,
-    title: "Decentralization",
-    description: "Built on Celo, ensuring true ownership and security for your digital assets.",
   },
   {
+    quote: "Trade and collect evolving NFTs in a vibrant and active marketplace.",
+    name: "Marketplace Integration",
+    title: "Vibrant Economy",
     icon: <ShoppingCart className="h-8 w-8" />,
-    title: "Marketplace Integration",
-    description: "Trade and collect evolving NFTs in a vibrant and active marketplace.",
   },
 ];
 
@@ -126,15 +132,13 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-4 mt-12">
-            {features.map((feature) => (
-              <Card key={feature.title} className="text-center p-6 flex flex-col items-center justify-center">
-                <div className="p-4 rounded-full bg-primary/10 text-primary mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold mt-2">{feature.title}</h3>
-                <p className="text-muted-foreground mt-2">{feature.description}</p>
-              </Card>
-            ))}
-          </div>
+           <div className="mt-12">
+            <InfiniteMovingCards
+                items={features}
+                direction="right"
+                speed="slow"
+            />
+           </div>
         </div>
       </section>
       
