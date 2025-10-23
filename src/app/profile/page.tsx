@@ -8,9 +8,14 @@ import { Copy, Edit, Award, Twitter, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import ProfileCard from "@/components/ui/ProfileCard";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function ProfilePage() {
-  const { walletAddress, ens, avatar, bio, achievements, crossPlatformLinks, nftHistory } = userProfile;
+  const { walletAddress, ens, avatar, bio, achievements, crossPlatformLinks, nftHistory, ...rest } = userProfile;
+  const iconUrl = PlaceHolderImages.find(p => p.id === 'nft1')?.imageUrl;
+  const grainUrl = PlaceHolderImages.find(p => p.id === 'hero')?.imageUrl;
+
 
   return (
     <div className="container py-8">
@@ -21,42 +26,18 @@ export default function ProfilePage() {
 
       <div className="mt-8 grid lg:grid-cols-3 gap-8">
         {/* Left Column: Profile Card */}
-        <div className="lg:col-span-1">
-          <Card>
-            <CardHeader className="items-center text-center">
-              <Avatar className="w-24 h-24 border-2 border-primary mb-4">
-                <AvatarImage src={avatar} alt={ens} />
-                <AvatarFallback>{ens.charAt(0)}</AvatarFallback>
-              </Avatar>
-              <CardTitle className="text-2xl">{ens}</CardTitle>
-              <TooltipProvider>
-                <Tooltip>
-                    <TooltipTrigger asChild>
-                        <Button variant="ghost" size="sm" className="text-muted-foreground">
-                            {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
-                            <Copy className="ml-2 h-4 w-4" />
-                        </Button>
-                    </TooltipTrigger>
-                    <TooltipContent><p>Copy Address</p></TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </CardHeader>
-            <CardContent className="text-center space-y-4">
-              <p className="text-muted-foreground">{bio}</p>
-              <Button variant="outline">
-                <Edit className="mr-2 h-4 w-4" /> Edit Profile
-              </Button>
-              <div className="flex justify-center gap-2 pt-4">
-                {crossPlatformLinks.map(link => (
-                    <Button key={link.platform} variant="secondary" size="icon" asChild>
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            {link.platform === "Twitter" ? <Twitter className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
-                        </a>
-                    </Button>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+        <div className="lg:col-span-1 flex justify-center">
+            <ProfileCard
+                avatarUrl={avatar}
+                name={ens}
+                title="EvoNFT Collector"
+                handle={ens}
+                status="Online"
+                contactText="Copy Address"
+                onContactClick={() => navigator.clipboard.writeText(walletAddress)}
+                iconUrl={iconUrl}
+                grainUrl={grainUrl}
+            />
         </div>
 
         {/* Right Column: Achievements and History */}
