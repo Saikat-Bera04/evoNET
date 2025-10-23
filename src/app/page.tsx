@@ -111,22 +111,20 @@ export default function Home() {
             </p>
           </div>
           <div className="flex justify-center">
-            <CardSpotlight className="w-full max-w-md">
-                <div className="relative z-20">
-                    <CardTitle className="flex items-center gap-2 text-2xl">
-                      <Sparkles className="text-primary" />
-                      <span>Anatomy of a dNFT</span>
-                    </CardTitle>
-                    <div className="mt-4 space-y-4 text-foreground/90">
-                       <ul className="list-none mt-2 space-y-3">
-                           <Step title="Base Layer: The core NFT with its unique identifier on the Celo blockchain." />
-                           <Step title="Metadata Layer: Dynamic data stored on IPFS that can be updated." />
-                           <Step title="Logic Layer: Smart contract rules that define how and when the NFT evolves." />
-                           <Step title="Data Layer: Oracles and APIs that feed real-world information to trigger changes." />
-                         </ul>
-                    </div>
+            <Card className="w-full max-w-md p-6">
+                <CardTitle className="flex items-center gap-2 text-2xl">
+                  <Sparkles className="text-primary" />
+                  <span>Anatomy of a dNFT</span>
+                </CardTitle>
+                <div className="mt-4 space-y-4 text-foreground/90">
+                   <ul className="list-none mt-2 space-y-3">
+                       <Step title="Base Layer: The core NFT with its unique identifier on the Celo blockchain." />
+                       <Step title="Metadata Layer: Dynamic data stored on IPFS that can be updated." />
+                       <Step title="Logic Layer: Smart contract rules that define how and when the NFT evolves." />
+                       <Step title="Data Layer: Oracles and APIs that feed real-world information to trigger changes." />
+                     </ul>
                 </div>
-            </CardSpotlight>
+            </Card>
           </div>
         </div>
       </section>
