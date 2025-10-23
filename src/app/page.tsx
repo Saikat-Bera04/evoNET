@@ -1,13 +1,6 @@
 
 
 import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import NftCard from "@/components/nft-card";
 import { nfts } from "@/lib/data";
 import { ArrowRight, Bot, IterationCw, ShoppingCart, Sparkles } from "lucide-react";
@@ -17,6 +10,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Masonry from "@/components/ui/masonry";
 import { ExpandableCardDemo } from "@/components/ui/expandable-card";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
 
 const features = [
   {
@@ -136,15 +130,11 @@ export default function Home() {
           </div>
           <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-4 mt-12">
             {features.map((feature) => (
-              <Card key={feature.title} className="text-center bg-card/50 hover:bg-card transition-all hover:-translate-y-2 duration-300">
-                <CardHeader className="items-center">
-                  <div className="p-4 rounded-full bg-primary/10 text-primary mb-4">{feature.icon}</div>
-                  <CardTitle>{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
+              <CardSpotlight key={feature.title} className="text-center p-6 flex flex-col items-center justify-center">
+                <div className="p-4 rounded-full bg-primary/10 text-primary mb-4 relative z-20">{feature.icon}</div>
+                <h3 className="text-xl font-bold relative z-20 mt-2 text-white">{feature.title}</h3>
+                <p className="text-muted-foreground mt-2 relative z-20">{feature.description}</p>
+              </CardSpotlight>
             ))}
           </div>
         </div>
