@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NftCard from "@/components/nft-card";
 import PageHeader from "@/components/page-header";
 import { Button } from "@/components/ui/button";
@@ -10,25 +10,35 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { nfts } from "@/lib/data";
 import { LayoutGrid, List, BarChart, Check, AlertCircle } from "lucide-react";
 
+type Stat = {
+    title: string;
+    value: number;
+    icon: React.ReactNode;
+};
+
 export default function DashboardPage() {
     const myNfts = nfts.slice(0,4); // Simulate owning 4 NFTs
     const [searchTerm, setSearchTerm] = useState("");
     const [rarityFilter, setRarityFilter] = useState("all");
+    const [stats, setStats] = useState<Stat[]>([]);
+
+    useEffect(() => {
+        const evolvedNfts = myNfts.filter(nft => nft.evolution.stage > 1).length;
+        
+        const initialStats: Stat[] = [
+            { title: "Total NFTs", value: myNfts.length, icon: <LayoutGrid className="h-6 w-6" /> },
+            { title: "Evolved NFTs", value: evolvedNfts, icon: <BarChart className="h-6 w-6" /> },
+            { title: "Ready to Evolve", value: 1, icon: <Check className="h-6 w-6" /> },
+            { title: "Pending Updates", value: 0, icon: <AlertCircle className="h-6 w-6" /> },
+        ];
+        setStats(initialStats);
+    }, [myNfts]);
 
     const filteredNfts = myNfts.filter(nft => {
         const matchesSearch = nft.name.toLowerCase().includes(searchTerm.toLowerCase());
         const matchesRarity = rarityFilter === 'all' || nft.attributes.rarity === rarityFilter;
         return matchesSearch && matchesRarity;
     });
-
-    const evolvedNfts = myNfts.filter(nft => nft.evolution.stage > 1).length;
-
-    const stats = [
-        { title: "Total NFTs", value: myNfts.length, icon: <LayoutGrid className="h-6 w-6" /> },
-        { title: "Evolved NFTs", value: evolvedNfts, icon: <BarChart className="h-6 w-6" /> },
-        { title: "Ready to Evolve", value: 1, icon: <Check className="h-6 w-6" /> },
-        { title: "Pending Updates", value: 0, icon: <AlertCircle className="h-6 w-6" /> },
-    ];
 
     return (
         <div className="container py-8">
