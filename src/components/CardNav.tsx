@@ -171,7 +171,7 @@ const CardNav: React.FC<CardNavProps> = ({
           <div
             className={`hamburger-menu ${
               isHamburgerOpen ? 'open' : ''
-            } group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] order-2 md:order-none`}
+            } group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] order-2 md:order-none cursor-target`}
             onClick={toggleMenu}
             role="button"
             aria-label={isExpanded ? 'Close menu' : 'Open menu'}
@@ -196,7 +196,7 @@ const CardNav: React.FC<CardNavProps> = ({
 
           <button
             type="button"
-            className="card-nav-cta-button hidden md:inline-flex border-0 rounded-[calc(0.75rem-0.2rem)] px-4 h-full font-medium cursor-pointer transition-colors duration-300"
+            className="card-nav-cta-button hidden md:inline-flex border-0 rounded-[calc(0.75rem-0.2rem)] px-4 h-full font-medium cursor-pointer transition-colors duration-300 cursor-target"
             style={{
               backgroundColor: buttonBgColor || 'hsl(var(--primary))',
               color: buttonTextColor || 'hsl(var(--primary-foreground))',
@@ -226,7 +226,7 @@ const CardNav: React.FC<CardNavProps> = ({
                 {item.links?.map((lnk, i) => (
                   <a
                     key={`${lnk.label}-${i}`}
-                    className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
+                    className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px] cursor-target"
                     href={lnk.href}
                     aria-label={lnk.ariaLabel}
                   >

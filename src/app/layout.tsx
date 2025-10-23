@@ -6,6 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import CardNav from '@/components/CardNav';
 import GridDistortion from '@/components/grid-distortion';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import TargetCursor from '@/components/ui/arrow-cursor';
 
 
 export const metadata: Metadata = {
@@ -77,6 +78,7 @@ export default function RootLayout({
           <Footer />
         </div>
         <Toaster />
+        <TargetCursor />
       </body>
     </html>
   );
