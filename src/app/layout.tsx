@@ -13,30 +13,24 @@ export const metadata: Metadata = {
 
 const navItems = [
   {
-    label: 'Explore',
+    label: 'Ecosystem',
     bgColor: 'hsl(var(--secondary))',
     textColor: 'hsl(var(--secondary-foreground))',
     links: [
+      { label: 'Home', href: '/', ariaLabel: 'Go to the homepage' },
       { label: 'Marketplace', href: '/marketplace', ariaLabel: 'Explore the marketplace' },
-      { label: 'Trending', href: '/marketplace?tab=trending', ariaLabel: 'See trending NFTs' },
+      { label: 'Mint an NFT', href: '/mint', ariaLabel: 'Mint a new NFT' },
+      { label: 'About EvoNFT', href: '/about', ariaLabel: 'Learn about EvoNFT' },
     ],
   },
   {
-    label: 'Create',
+    label: 'My Collection',
     bgColor: 'hsl(var(--primary))',
     textColor: 'hsl(var(--primary-foreground))',
     links: [
-      { label: 'Mint an NFT', href: '/mint', ariaLabel: 'Mint a new NFT' },
-      { label: 'View Your Collection', href: '/dashboard', ariaLabel: 'View your NFT dashboard' },
-    ],
-  },
-  {
-    label: 'Learn',
-    bgColor: 'hsl(var(--muted))',
-    textColor: 'hsl(var(--muted-foreground))',
-    links: [
-      { label: 'About EvoNFT', href: '/about', ariaLabel: 'Learn about EvoNFT' },
-      { label: 'Our Vision', href: '/about', ariaLabel: 'Read about our vision' },
+        { label: 'Dashboard', href: '/dashboard', ariaLabel: 'View your NFT dashboard' },
+        { label: 'Profile', href: '/profile', ariaLabel: 'View your user profile' },
+        { label: 'Admin', href: '/admin', ariaLabel: 'Go to the admin portal' },
     ],
   },
 ];
