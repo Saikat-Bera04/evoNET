@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useRef } from 'react';
@@ -508,11 +509,11 @@ export default function LiquidEther({
       scene: THREE.Scene;
       camera: THREE.Camera;
       mesh: THREE.Mesh;
-      splatMaterial: THREE.RawShaderMaterial;
-      advectionMaterial: THREE.RawShaderMaterial;
-      divergenceMaterial: THREE.RawShaderMaterial;
-      pressureMaterial: THREE.RawShaderMaterial;
-      gradientSubtractMaterial: THREE.RawShaderMaterial;
+      splatMaterial: THREE.ShaderMaterial;
+      advectionMaterial: THREE.ShaderMaterial;
+      divergenceMaterial: THREE.ShaderMaterial;
+      pressureMaterial: THREE.ShaderMaterial;
+      gradientSubtractMaterial: THREE.ShaderMaterial;
       fboSize: THREE.Vector2;
       texelSize: THREE.Vector2;
 
@@ -574,7 +575,7 @@ export default function LiquidEther({
       }
       
       createSplatMaterial() {
-        return new THREE.RawShaderMaterial({
+        return new THREE.ShaderMaterial({
           vertexShader: quad_vert,
           fragmentShader: splat_frag,
           uniforms: {
@@ -588,7 +589,7 @@ export default function LiquidEther({
       }
 
       createAdvectionMaterial() {
-        return new THREE.RawShaderMaterial({
+        return new THREE.ShaderMaterial({
           vertexShader: quad_vert,
           fragmentShader: advection_frag,
           uniforms: {
@@ -602,7 +603,7 @@ export default function LiquidEther({
       }
 
       createDivergenceMaterial() {
-        return new THREE.RawShaderMaterial({
+        return new THREE.ShaderMaterial({
           vertexShader: varying_uv_vert,
           fragmentShader: divergence_frag,
           uniforms: {
@@ -613,7 +614,7 @@ export default function LiquidEther({
       }
 
       createPressureMaterial() {
-        return new THREE.RawShaderMaterial({
+        return new THREE.ShaderMaterial({
           vertexShader: varying_uv_vert,
           fragmentShader: pressure_frag,
           uniforms: {
@@ -625,7 +626,7 @@ export default function LiquidEther({
       }
 
       createGradientSubtractMaterial() {
-        return new THREE.RawShaderMaterial({
+        return new THREE.ShaderMaterial({
           vertexShader: varying_uv_vert,
           fragmentShader: gradient_subtract_frag,
           uniforms: {
@@ -720,7 +721,7 @@ export default function LiquidEther({
         this.camera = new THREE.Camera();
         this.output = new THREE.Mesh(
           new THREE.PlaneGeometry(2, 2),
-          new THREE.RawShaderMaterial({
+          new THREE.ShaderMaterial({
             vertexShader: quad_vert,
             fragmentShader: final_frag,
             transparent: true,
