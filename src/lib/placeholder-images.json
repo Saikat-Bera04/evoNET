@@ -1,3 +1,52 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "Abstract 3D rendering of evolving shapes and colors representing dynamic NFTs.",
+      "imageUrl": "https://images.unsplash.com/photo-1713632953563-151e16c2ea0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMGZ1dHVyaXN0aWN8ZW58MHx8fHwxNzYxMDg5NzA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract futuristic"
+    },
+    {
+      "id": "nft1",
+      "description": "A mystical cosmic entity wandering through a nebula.",
+      "imageUrl": "https://images.unsplash.com/photo-1707057538394-b2f0252325ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb3NtaWMlMjBlbnRpdHl8ZW58MHx8fHwxNzYxMTg1MzYyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cosmic entity"
+    },
+    {
+      "id": "nft2",
+      "description": "A dragon made of crystal that shimmers with chronological energy.",
+      "imageUrl": "https://images.unsplash.com/photo-1708856034090-627677aea472?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjcnlzdGFsJTIwZHJhZ29ufGVufDB8fHx8MTc2MTE4NTM2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "crystal dragon"
+    },
+    {
+      "id": "nft3",
+      "description": "A mechanical golem powered by a quantum core.",
+      "imageUrl": "https://images.unsplash.com/photo-1744990014938-0bf0e8a34921?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtZWNoYW5pY2FsJTIwZ29sZW18ZW58MHx8fHwxNzYxMTg1MzYyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mechanical golem"
+    },
+    {
+      "id": "nft4",
+      "description": "An ethereal forest spirit that changes with the seasons.",
+      "imageUrl": "https://images.unsplash.com/photo-1751727192647-02f05baaf105?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmb3Jlc3QlMjBzcGlyaXR8ZW58MHx8fHwxNzYxMTg1MzYyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "forest spirit"
+    },
+    {
+      "id": "nft5",
+      "description": "A sentient data stream visualizing blockchain transactions.",
+      "imageUrl": "https://images.unsplash.com/photo-1717444309226-c0809d4b5bde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkYXRhJTIwc3RyZWFtfGVufDB8fHx8MTc2MTEwNzcxM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data stream"
+    },
+    {
+      "id": "nft6",
+      "description": "A living city that grows and evolves over time.",
+      "imageUrl": "https://images.unsplash.com/photo-1754214217593-1dda6cff33ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bGl2aW5nJTIwY2l0eXxlbnwwfHx8fDE3NjExODUzNjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "living city"
+    },
+    {
+      "id": "avatar1",
+      "description": "User avatar",
+      "imageUrl": "https://images.unsplash.com/photo-1489514427794-bb4f67f45c7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxwcm9maWxlJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYxMTQ5NjI0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "profile portrait"
+    }
+  ]
 }
