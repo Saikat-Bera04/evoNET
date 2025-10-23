@@ -14,6 +14,7 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Masonry from "@/components/ui/masonry";
+import { ExpandableCardDemo } from "@/components/ui/expandable-card";
 
 const features = [
   {
@@ -145,25 +146,7 @@ export default function Home() {
       <section id="trending" className="w-full py-12 md:py-24 lg:py-32 bg-background/80 backdrop-blur-sm">
         <div className="container px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 font-headline">Trending NFTs</h2>
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full max-w-6xl mx-auto"
-          >
-            <CarouselContent>
-              {nfts.slice(0, 5).map((nft, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <NftCard nft={nft} />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="ml-12"/>
-            <CarouselNext className="mr-12"/>
-          </Carousel>
+          <ExpandableCardDemo />
         </div>
       </section>
     </div>
