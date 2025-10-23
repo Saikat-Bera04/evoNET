@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import PageHeader from "@/components/page-header";
 import { userProfile } from "@/lib/data";
