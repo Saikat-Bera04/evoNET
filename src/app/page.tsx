@@ -1,6 +1,3 @@
-
-
-
 import { Button } from "@/components/ui/magic-border-button";
 import NftCard from "@/components/nft-card";
 import { nfts } from "@/lib/data";
@@ -12,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Masonry from "@/components/ui/masonry";
 import { ExpandableCardDemo } from "@/components/ui/expandable-card";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import BlurText from "@/components/ui/blur-text";
 
 const features = [
   {
@@ -61,9 +59,11 @@ export default function Home() {
                   EvoNFT
               </span>
           </div>
-          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none font-headline bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400">
-            Evolving NFTs for the Connected Metaverse
-          </h1>
+          <BlurText
+            text="Evolving NFTs for the Connected Metaverse"
+            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none font-headline bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400"
+            animateBy="words"
+          />
           <p className="mx-auto max-w-[700px] text-foreground/80 md:text-xl mt-4">
             Experience the next generation of digital collectibles. Mint, trade, and evolve NFTs that live, breathe, and change with you.
           </p>
