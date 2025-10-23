@@ -27,8 +27,8 @@ const navItems = [
   },
   {
     label: 'My Collection',
-    bgColor: 'hsl(0 0% 100%)',
-    textColor: 'hsl(0 0% 0%)',
+    bgColor: 'hsl(0 0% 0%)',
+    textColor: 'hsl(0 0% 100%)',
     links: [
         { label: 'Dashboard', href: '/dashboard', ariaLabel: 'View your NFT dashboard' },
         { label: 'Profile', href: '/profile', ariaLabel: 'View your user profile' },
