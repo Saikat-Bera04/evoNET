@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -56,6 +57,11 @@ export default function Home() {
         {/* The gradient overlay is also in the main layout */}
 
         <div className="container px-4 md:px-6 z-10 flex flex-col items-center">
+          <div className="font-headline text-3xl font-bold mb-4">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400">
+                  EvoNFT
+              </span>
+          </div>
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none font-headline bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400">
             Evolving NFTs for the Connected Metaverse
           </h1>
