@@ -510,7 +510,7 @@ export default function LiquidEther({
       mesh: THREE.Mesh;
       splatMaterial: THREE.RawShaderMaterial;
       advectionMaterial: THREE.RawShaderMaterial;
-      divergenceMaterial: THREE.Raw-ShaderMaterial;
+      divergenceMaterial: THREE.RawShaderMaterial;
       pressureMaterial: THREE.RawShaderMaterial;
       gradientSubtractMaterial: THREE.RawShaderMaterial;
       fboSize: THREE.Vector2;
