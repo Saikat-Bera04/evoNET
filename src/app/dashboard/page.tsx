@@ -41,11 +41,14 @@ export default function DashboardPage() {
         setStats(initialStats);
     }, [myNfts]);
 
-    const filteredNfts = myNfts?.filter(nft => {
+    const filteredNfts = useMemo(() => {
+      if (!myNfts) return null;
+      return myNfts.filter(nft => {
         const matchesSearch = nft.name.toLowerCase().includes(searchTerm.toLowerCase());
         const matchesRarity = rarityFilter === 'all' || nft.attributes.rarity === rarityFilter;
         return matchesSearch && matchesRarity;
-    });
+      });
+    }, [myNfts, searchTerm, rarityFilter]);
 
     return (
         <div className="container py-8">

@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import NftCard from "@/components/nft-card";
 import PageHeader from "@/components/page-header";
-import { nfts, userProfile } from "@/lib/data";
+import { nfts as allNfts, userProfile, type Nft } from "@/lib/data";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -13,7 +13,29 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-function NFTGrid({ nfts }: { nfts: typeof nfts }) {
+function NFTGrid({ nfts }: { nfts: Nft[] | null }) {
+  if (!nfts) {
+     return (
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[...Array(8)].map((_, i) => (
+                <Card key={i}>
+                    <CardHeader className="p-0">
+                        <Skeleton className="w-full aspect-[3/4]" />
+                    </CardHeader>
+                    <CardContent className="p-4 space-y-3">
+                        <Skeleton className="h-5 w-3/4" />
+                        <Skeleton className="h-8 w-full" />
+                        <Skeleton className="h-4 w-1/2" />
+                    </CardContent>
+                    <CardFooter className="p-4">
+                            <Skeleton className="h-10 w-full" />
+                    </CardFooter>
+                </Card>
+            ))}
+        </div>
+    );
+  }
+  
   if (nfts.length === 0) {
     return (
       <div className="text-center py-16 border-2 border-dashed border-muted rounded-lg col-span-full">
@@ -45,7 +67,7 @@ function Recommendations() {
                     userProfile: JSON.stringify({ interests: ['Cosmic', 'Mythical'], style: 'dark fantasy' }),
                     walletData: "Owns: Cosmic Wanderer. Sold: Quantum Golem.",
                     activityHistory: "Frequently views 'Cybernetic' and 'Abstract' type NFTs.",
-                    newNftReleases: JSON.stringify(nfts.slice(4,6).map(n => ({name: n.name, description: n.description}))),
+                    newNftReleases: JSON.stringify(allNfts.slice(4,6).map(n => ({name: n.name, description: n.description}))),
                 };
                 const result = await recommendNfts(mockInput);
                 setRecommendations(result.recommendations);
@@ -102,14 +124,28 @@ function Recommendations() {
 }
 
 export default function MarketplacePage() {
+  const [nfts, setNfts] = useState<Nft[] | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [rarityFilter, setRarityFilter] = useState("all");
 
-  const filteredNfts = nfts.filter((nft) => {
-    const matchesSearch = nft.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesRarity = rarityFilter === "all" || nft.attributes.rarity === rarityFilter;
-    return matchesSearch && matchesRarity;
-  });
+  useEffect(() => {
+    // Set NFTs on the client to avoid hydration issues with random data
+    setNfts(allNfts);
+  }, []);
+
+  const filteredNfts = useMemo(() => {
+    if (!nfts) return null;
+    return nfts.filter((nft) => {
+      const matchesSearch = nft.name.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesRarity = rarityFilter === "all" || nft.attributes.rarity === rarityFilter;
+      return matchesSearch && matchesRarity;
+    });
+  }, [nfts, searchTerm, rarityFilter]);
+
+  const trendingNfts = useMemo(() => {
+    if (!filteredNfts) return null;
+    return filteredNfts.slice().sort((a,b) => b.price - a.price).slice(0,4);
+  }, [filteredNfts]);
 
   return (
     <div className="container py-8">
@@ -154,7 +190,7 @@ export default function MarketplacePage() {
             <NFTGrid nfts={filteredNfts} />
           </TabsContent>
           <TabsContent value="trending">
-            <NFTGrid nfts={filteredNfts.slice().sort((a,b) => b.price - a.price).slice(0,4)} />
+            <NFTGrid nfts={trendingNfts} />
           </TabsContent>
           <TabsContent value="recommended">
             <Recommendations />
