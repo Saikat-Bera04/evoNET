@@ -1,6 +1,6 @@
 
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/magic-border-button";
 import NftCard from "@/components/nft-card";
 import { nfts } from "@/lib/data";
 import { ArrowRight, Bot, IterationCw, ShoppingCart, Sparkles } from "lucide-react";
@@ -48,7 +48,6 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center">
       <section className="relative w-full h-[70vh] md:h-[80vh] flex items-center justify-center text-center overflow-hidden">
-        {/* The GridDistortion component is now in the main layout, so we don't need it here. */}
         {/* The gradient overlay is also in the main layout */}
 
         <div className="container px-4 md:px-6 z-10 flex flex-col items-center">
@@ -64,10 +63,10 @@ export default function Home() {
             Experience the next generation of digital collectibles. Mint, trade, and evolve NFTs that live, breathe, and change with you.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <Button asChild size="lg" className="font-bold">
+            <Button asChild size="lg">
               <Link href="/mint">Mint Now <ArrowRight className="ml-2 h-5 w-5" /></Link>
             </Button>
-            <Button asChild size="lg" variant="secondary" className="font-bold">
+            <Button asChild size="lg" variant="secondary">
               <Link href="/marketplace">Explore Marketplace</Link>
             </Button>
           </div>

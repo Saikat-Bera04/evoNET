@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils';
 import Footer from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
 import CardNav from '@/components/CardNav';
-import GridDistortion from '@/components/grid-distortion';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import TargetCursor from '@/components/ui/arrow-cursor';
 
@@ -66,9 +65,9 @@ export default function RootLayout({
       </head>
       <body className={cn('font-body antialiased min-h-screen bg-background')} suppressHydrationWarning>
         {heroImage && (
-          <GridDistortion 
-            imageSrc={heroImage.imageUrl} 
-            className="fixed inset-0 z-0 opacity-20"
+           <div
+            className="fixed inset-0 z-0 opacity-20 bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroImage.imageUrl})` }}
           />
         )}
         <div className="absolute inset-0 z-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
