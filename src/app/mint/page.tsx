@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -112,7 +113,7 @@ export default function MintPage() {
         />
 
         <div className="grid lg:grid-cols-2 gap-12 mt-8">
-          <div>
+          <div className="p-8">
             <h2 className="text-2xl font-bold mb-4">NFT Details</h2>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

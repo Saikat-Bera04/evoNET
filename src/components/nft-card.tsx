@@ -26,7 +26,7 @@ export default function NftCard({ nft, showLink = true }: NftCardProps) {
   const evolutionProgress = (nft.evolution.stage / nft.evolution.maxStage) * 100;
 
   return (
-    <Card className="group/card relative overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1">
+    <Card className="group/card overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 bg-card/70 backdrop-blur-sm border-border/40">
       <CardHeader className="p-0">
         <div className="relative aspect-[3/4] w-full overflow-hidden">
           <Image
