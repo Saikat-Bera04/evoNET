@@ -55,7 +55,7 @@ export default function RootLayout({
   const heroImage = PlaceHolderImages.find(p => p.id === 'hero');
 
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -64,7 +64,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={cn('font-body antialiased min-h-screen bg-background')}>
+      <body className={cn('font-body antialiased min-h-screen bg-background')} suppressHydrationWarning>
         {heroImage && (
           <GridDistortion 
             imageSrc={heroImage.imageUrl} 
