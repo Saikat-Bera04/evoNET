@@ -9,7 +9,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Masonry from "@/components/ui/masonry";
 import { ExpandableCardDemo } from "@/components/ui/expandable-card";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
-import { CardSpotlight } from "@/components/ui/card-spotlight";
 
 const features = [
   {
