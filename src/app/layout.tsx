@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 const navItems = [
   {
     label: 'Ecosystem',
-    bgColor: 'hsl(var(--secondary))',
-    textColor: 'hsl(var(--secondary-foreground))',
+    bgColor: 'hsl(0 0% 0%)',
+    textColor: 'hsl(0 0% 100%)',
     links: [
       { label: 'Home', href: '/', ariaLabel: 'Go to the homepage' },
       { label: 'Marketplace', href: '/marketplace', ariaLabel: 'Explore the marketplace' },
@@ -27,8 +27,8 @@ const navItems = [
   },
   {
     label: 'My Collection',
-    bgColor: 'hsl(var(--primary))',
-    textColor: 'hsl(var(--primary-foreground))',
+    bgColor: 'hsl(0 0% 0%)',
+    textColor: 'hsl(0 0% 100%)',
     links: [
         { label: 'Dashboard', href: '/dashboard', ariaLabel: 'View your NFT dashboard' },
         { label: 'Profile', href: '/profile', ariaLabel: 'View your user profile' },
@@ -37,8 +37,8 @@ const navItems = [
   },
   {
     label: 'About',
-    bgColor: 'hsl(var(--accent))',
-    textColor: 'hsl(var(--accent-foreground))',
+    bgColor: 'hsl(0 0% 0%)',
+    textColor: 'hsl(0 0% 100%)',
     links: [
         { label: 'About EvoNFT', href: '/about', ariaLabel: 'Learn about EvoNFT' },
         { label: 'Admin', href: '/admin', ariaLabel: 'Go to the admin portal' },
