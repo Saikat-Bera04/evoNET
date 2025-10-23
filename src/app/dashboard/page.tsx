@@ -1,14 +1,15 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import NftCard from "@/components/nft-card";
 import PageHeader from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { nfts } from "@/lib/data";
+import { nfts as allNfts, type Nft } from "@/lib/data";
 import { LayoutGrid, List, BarChart, Check, AlertCircle } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type Stat = {
     title: string;
@@ -17,12 +18,18 @@ type Stat = {
 };
 
 export default function DashboardPage() {
-    const myNfts = useMemo(() => nfts.slice(0,4), []); // Simulate owning 4 NFTs
+    const [myNfts, setMyNfts] = useState<Nft[] | null>(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [rarityFilter, setRarityFilter] = useState("all");
     const [stats, setStats] = useState<Stat[]>([]);
 
     useEffect(() => {
+        // Simulate fetching user's NFTs
+        setMyNfts(allNfts.slice(0, 4));
+    }, []);
+
+    useEffect(() => {
+        if (!myNfts) return;
         const evolvedNfts = myNfts.filter(nft => nft.evolution.stage > 1).length;
         
         const initialStats: Stat[] = [
@@ -34,7 +41,7 @@ export default function DashboardPage() {
         setStats(initialStats);
     }, [myNfts]);
 
-    const filteredNfts = myNfts.filter(nft => {
+    const filteredNfts = myNfts?.filter(nft => {
         const matchesSearch = nft.name.toLowerCase().includes(searchTerm.toLowerCase());
         const matchesRarity = rarityFilter === 'all' || nft.attributes.rarity === rarityFilter;
         return matchesSearch && matchesRarity;
@@ -86,7 +93,25 @@ export default function DashboardPage() {
                     </Select>
                 </div>
                 
-                {filteredNfts.length > 0 ? (
+                {!filteredNfts ? (
+                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        {[...Array(4)].map((_, i) => (
+                           <Card key={i}>
+                                <CardHeader className="p-0">
+                                    <Skeleton className="w-full aspect-[3/4]" />
+                                </CardHeader>
+                                <CardContent className="p-4 space-y-3">
+                                    <Skeleton className="h-5 w-3/4" />
+                                    <Skeleton className="h-8 w-full" />
+                                    <Skeleton className="h-4 w-1/2" />
+                                </CardContent>
+                                <CardFooter className="p-4">
+                                     <Skeleton className="h-10 w-full" />
+                                </CardFooter>
+                           </Card>
+                        ))}
+                    </div>
+                ) : filteredNfts.length > 0 ? (
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         {filteredNfts.map(nft => (
                             <NftCard key={nft.id} nft={nft} />
