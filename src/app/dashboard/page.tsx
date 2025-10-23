@@ -1,10 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import NftCard from "@/components/nft-card";
 import PageHeader from "@/components/page-header";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { nfts as allNfts, type Nft } from "@/lib/data";
@@ -22,9 +22,9 @@ export default function DashboardPage() {
     const [searchTerm, setSearchTerm] = useState("");
     const [rarityFilter, setRarityFilter] = useState("all");
     const [stats, setStats] = useState<Stat[]>([]);
-
+    
     useEffect(() => {
-        // Simulate fetching user's NFTs
+        // Simulate fetching user's NFTs on the client to avoid hydration issues with random data
         setMyNfts(allNfts.slice(0, 4));
     }, []);
 
