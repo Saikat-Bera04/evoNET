@@ -13,6 +13,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Masonry from "@/components/ui/masonry";
 
 const features = [
   {
@@ -39,6 +40,13 @@ const features = [
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(p => p.id === 'hero');
+  const masonryItems = nfts.map(nft => ({
+    id: nft.id,
+    imageUrl: nft.image.src,
+    imageHint: nft.image.hint,
+    url: `/evolve/${nft.id}`,
+    name: nft.name,
+  }));
 
   return (
     <div className="flex flex-col items-center">
@@ -62,6 +70,22 @@ export default function Home() {
             </Button>
           </div>
         </div>
+      </section>
+
+       <section className="w-full py-12 md:py-24 lg:py-32 container">
+        <Masonry
+          items={masonryItems}
+          columns={3}
+          gap={24}
+          ease="power3.out"
+          duration={0.6}
+          stagger={0.05}
+          animateFrom="bottom"
+          scaleOnHover={true}
+          hoverScale={1.05}
+          blurToFocus={false}
+          colorShiftOnHover={false}
+        />
       </section>
 
       <section id="what-are-dnfts" className="w-full py-12 md:py-24 lg:py-32 bg-background/80 backdrop-blur-sm">
