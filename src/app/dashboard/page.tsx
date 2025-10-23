@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import NftCard from "@/components/nft-card";
 import PageHeader from "@/components/page-header";
 import { Button } from "@/components/ui/button";
@@ -17,7 +17,7 @@ type Stat = {
 };
 
 export default function DashboardPage() {
-    const myNfts = nfts.slice(0,4); // Simulate owning 4 NFTs
+    const myNfts = useMemo(() => nfts.slice(0,4), []); // Simulate owning 4 NFTs
     const [searchTerm, setSearchTerm] = useState("");
     const [rarityFilter, setRarityFilter] = useState("all");
     const [stats, setStats] = useState<Stat[]>([]);
