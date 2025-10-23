@@ -40,17 +40,34 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  borderMagic?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, borderMagic = true, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
+    const baseClass = cn(buttonVariants({ variant, size, className }));
+
+    // For icon-sized buttons or when used asChild, fall back to the original simple rendering
+    if (size === "icon" || asChild) {
+      return (
+        <Comp className={baseClass} ref={ref} {...props} />
+      );
+    }
+
+    // Default: render the "Border Magic" button structure
+    const wrapperClass = cn(
+      baseClass,
+      "relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+    );
+
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
+      <Comp className={wrapperClass} ref={ref} {...props}>
+        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+        <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+          {props.children}
+        </span>
+      </Comp>
     );
   }
 );

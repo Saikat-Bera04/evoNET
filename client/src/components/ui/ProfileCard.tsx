@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useCallback, useMemo } from 'react'; 
 import './ProfileCard.css';  
+import { Button } from '@/components/ui/button'
 
 interface ProfileCardProps {   
     avatarUrl: string;   
@@ -311,15 +312,15 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                                     <div className="pc-status">{status}</div>                   
                                 </div>                 
                             </div>                 
-                            <button                   
-                                className="pc-contact-btn"                   
-                                onClick={handleContactClick}                   
-                                style={{ pointerEvents: 'auto' }}                   
-                                type="button"                   
-                                aria-label={`Contact ${name || 'user'}`}                 
-                            >                   
-                            {contactText}                 
-                            </button>               
+                            <Button
+                                className="pc-contact-btn"
+                                onClick={handleContactClick}
+                                style={{ pointerEvents: 'auto' }}
+                                type="button"
+                                aria-label={`Contact ${name || 'user'}`}
+                            >
+                                {contactText}
+                            </Button>
                         </div>             
                     )}           
                 </div>           

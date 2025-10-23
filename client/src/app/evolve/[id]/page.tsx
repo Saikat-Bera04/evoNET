@@ -8,8 +8,9 @@ import { ArrowRight, Check, Clock, Milestone, Zap } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Progress } from "@/components/ui/progress";
 
-export default function EvolvePage({ params }: { params: { id: string } }) {
-  const nft = nfts.find((n) => n.id === params.id);
+export default async function EvolvePage({ params }: { params: { id: string } | Promise<{ id: string }> }) {
+  const { id } = (await params) as { id: string };
+  const nft = nfts.find((n) => n.id === id);
 
   if (!nft) {
     notFound();
