@@ -20,7 +20,7 @@ export const CanvasRevealEffect = ({
   showGradient?: boolean;
 }) => {
   return (
-    <div className={cn("h-full relative bg-white w-full", containerClassName)}>
+    <div className={cn("h-full relative bg-transparent w-full", containerClassName)}>
       <div className="h-full w-full">
         <DotMatrix
           colors={colors ?? [[0, 255, 255]]}
@@ -38,7 +38,7 @@ export const CanvasRevealEffect = ({
         />
       </div>
       {showGradient && (
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 to-[84%]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-card to-[84%] opacity-70" />
       )}
     </div>
   );

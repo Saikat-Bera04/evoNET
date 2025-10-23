@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import NftCard from "@/components/nft-card";
 import { nfts } from "@/lib/data";
-import { ArrowRight, Bot, IterationCw, ShoppingCart, Sparkles } from "lucide-react";
+import { ArrowRight, Bot, IterationCw, ShoppingCart, Sparkles, Check } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Masonry from "@/components/ui/masonry";
 import { ExpandableCardDemo } from "@/components/ui/expandable-card";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
 
 const features = [
   {
@@ -36,6 +37,15 @@ const features = [
     icon: <ShoppingCart className="h-8 w-8" />,
   },
 ];
+
+const Step = ({ title }: { title: string }) => {
+   return (
+     <li className="flex gap-2 items-start">
+       <Check className="h-4 w-4 text-primary mt-1 shrink-0" />
+       <p className="text-foreground/90">{title}</p>
+     </li>
+   );
+ };
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(p => p.id === 'hero');
@@ -101,20 +111,22 @@ export default function Home() {
             </p>
           </div>
           <div className="flex justify-center">
-             <Card className="w-full max-w-md border-2 border-primary/50 shadow-primary/20 shadow-2xl">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Sparkles className="text-primary" />
-                  <span>Anatomy of a dNFT</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4 text-foreground/90">
-                <div className="p-3 bg-muted/50 rounded-lg"><strong>Base Layer:</strong> The core NFT with its unique identifier on the Celo blockchain.</div>
-                <div className="p-3 bg-muted/50 rounded-lg"><strong>Metadata Layer:</strong> Dynamic data stored on IPFS that can be updated.</div>
-                <div className="p-3 bg-muted/50 rounded-lg"><strong>Logic Layer:</strong> Smart contract rules that define how and when the NFT evolves.</div>
-                <div className="p-3 bg-muted/50 rounded-lg"><strong>Data Layer:</strong> Oracles and APIs that feed real-world information to trigger changes.</div>
-              </CardContent>
-            </Card>
+            <CardSpotlight className="w-full max-w-md">
+                <div className="relative z-20">
+                    <CardTitle className="flex items-center gap-2 text-2xl">
+                      <Sparkles className="text-primary" />
+                      <span>Anatomy of a dNFT</span>
+                    </CardTitle>
+                    <div className="mt-4 space-y-4 text-foreground/90">
+                       <ul className="list-none mt-2 space-y-3">
+                           <Step title="Base Layer: The core NFT with its unique identifier on the Celo blockchain." />
+                           <Step title="Metadata Layer: Dynamic data stored on IPFS that can be updated." />
+                           <Step title="Logic Layer: Smart contract rules that define how and when the NFT evolves." />
+                           <Step title="Data Layer: Oracles and APIs that feed real-world information to trigger changes." />
+                         </ul>
+                    </div>
+                </div>
+            </CardSpotlight>
           </div>
         </div>
       </section>
