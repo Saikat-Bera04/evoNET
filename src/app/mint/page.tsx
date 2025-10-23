@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -111,21 +112,59 @@ export default function MintPage() {
         />
 
         <div className="grid lg:grid-cols-2 gap-12 mt-8">
-          <Card className="bg-card/50">
-            <CardHeader>
-              <CardTitle>NFT Details</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold mb-4">NFT Details</h2>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>NFT Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="e.g., Cosmic Wanderer" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="description"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Description</FormLabel>
+                      <FormControl>
+                        <Textarea placeholder="Describe your unique creation..." {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="image"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Image Upload (IPFS-backed)</FormLabel>
+                      <FormControl>
+                        <Input type="file" accept="image/*" onChange={(e) => field.onChange(e.target.files)} />
+                      </FormControl>
+                      <FormDescription>Your image will be pinned to IPFS.</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <div className="grid md:grid-cols-3 gap-4">
                   <FormField
                     control={form.control}
-                    name="name"
+                    name="type"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>NFT Name</FormLabel>
+                        <FormLabel>Type</FormLabel>
                         <FormControl>
-                          <Input placeholder="e.g., Cosmic Wanderer" {...field} />
+                          <Input placeholder="e.g., Cosmic" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -133,89 +172,47 @@ export default function MintPage() {
                   />
                   <FormField
                     control={form.control}
-                    name="description"
+                    name="level"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Description</FormLabel>
+                        <FormLabel>Level</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="Describe your unique creation..." {...field} />
+                          <Input type="number" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <FormField
+                   <FormField
                     control={form.control}
-                    name="image"
+                    name="rarity"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Image Upload (IPFS-backed)</FormLabel>
-                        <FormControl>
-                          <Input type="file" accept="image/*" onChange={(e) => field.onChange(e.target.files)} />
-                        </FormControl>
-                        <FormDescription>Your image will be pinned to IPFS.</FormDescription>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <div className="grid md:grid-cols-3 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="type"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Type</FormLabel>
-                          <FormControl>
-                            <Input placeholder="e.g., Cosmic" {...field} />
-                          </FormControl>
+                          <FormLabel>Rarity</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                              <SelectTrigger>
+                                  <SelectValue placeholder="Select a rarity" />
+                              </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                  {["Common", "Uncommon", "Rare", "Mythic", "Legendary"].map(rarity => (
+                                      <SelectItem key={rarity} value={rarity}>{rarity}</SelectItem>
+                                  ))}
+                              </SelectContent>
+                          </Select>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="level"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Level</FormLabel>
-                          <FormControl>
-                            <Input type="number" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                     <FormField
-                      control={form.control}
-                      name="rarity"
-                      render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Rarity</FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select a rarity" />
-                                </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                    {["Common", "Uncommon", "Rare", "Mythic", "Legendary"].map(rarity => (
-                                        <SelectItem key={rarity} value={rarity}>{rarity}</SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
-                            <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <Button type="submit" size="lg" className="w-full font-bold" disabled={form.formState.isSubmitting}>
-                    {form.formState.isSubmitting ? "Minting..." : "Mint NFT"}
-                    <Sparkles className="ml-2 h-5 w-5" />
-                  </Button>
-                </form>
-              </Form>
-            </CardContent>
-          </Card>
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <Button type="submit" size="lg" className="w-full font-bold" disabled={form.formState.isSubmitting}>
+                  {form.formState.isSubmitting ? "Minting..." : "Mint NFT"}
+                  <Sparkles className="ml-2 h-5 w-5" />
+                </Button>
+              </form>
+            </Form>
+          </div>
 
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-center lg:text-left">NFT Preview</h3>
