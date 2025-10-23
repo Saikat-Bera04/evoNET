@@ -10,7 +10,6 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Masonry from "@/components/ui/masonry";
 import { ExpandableCardDemo } from "@/components/ui/expandable-card";
-import { CardSpotlight } from "@/components/ui/card-spotlight";
 
 const features = [
   {
@@ -63,10 +62,10 @@ export default function Home() {
             Experience the next generation of digital collectibles. Mint, trade, and evolve NFTs that live, breathe, and change with you.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <Button asChild size="lg">
+            <Button asChild>
               <Link href="/mint">Mint Now <ArrowRight className="ml-2 h-5 w-5" /></Link>
             </Button>
-            <Button asChild size="lg" variant="secondary">
+            <Button asChild>
               <Link href="/marketplace">Explore Marketplace</Link>
             </Button>
           </div>
@@ -129,11 +128,11 @@ export default function Home() {
           </div>
           <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-4 mt-12">
             {features.map((feature) => (
-              <CardSpotlight key={feature.title} className="text-center p-6 flex flex-col items-center justify-center">
-                <div className="p-4 rounded-full bg-primary/10 text-primary mb-4 relative z-20">{feature.icon}</div>
-                <h3 className="text-xl font-bold relative z-20 mt-2 text-white">{feature.title}</h3>
-                <p className="text-muted-foreground mt-2 relative z-20">{feature.description}</p>
-              </CardSpotlight>
+              <Card key={feature.title} className="text-center p-6 flex flex-col items-center justify-center">
+                <div className="p-4 rounded-full bg-primary/10 text-primary mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-bold mt-2">{feature.title}</h3>
+                <p className="text-muted-foreground mt-2">{feature.description}</p>
+              </Card>
             ))}
           </div>
         </div>
