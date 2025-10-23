@@ -3,6 +3,7 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ArrowUpRight } from 'lucide-react';
 import Logo from './logo';
+import ConnectWallet from './connect-wallet';
 
 type CardNavLink = {
   label: string;
@@ -194,16 +195,9 @@ const CardNav: React.FC<CardNavProps> = ({
             <Logo />
           </div>
 
-          <button
-            type="button"
-            className="card-nav-cta-button hidden md:inline-flex border-0 rounded-[calc(0.75rem-0.2rem)] px-4 h-full font-medium cursor-pointer transition-colors duration-300 cursor-target"
-            style={{
-              backgroundColor: buttonBgColor || 'hsl(var(--primary))',
-              color: buttonTextColor || 'hsl(var(--primary-foreground))',
-            }}
-          >
-            Connect Wallet
-          </button>
+          <div className="hidden md:block">
+            <ConnectWallet />
+          </div>
         </div>
 
         <div
